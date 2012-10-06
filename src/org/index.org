@@ -96,7 +96,9 @@ alert(1+2*3)
 * Thanks!                                                             :slide:
 *** Alan Dipert
 *** @alandipert
-*** Blog Post: http://bit.ly/pffaCd
+*** Source for presentation: https://github.com/alandipert/barcamp2012-jsonscript
+*** Presentation online: http://alandipert.github.com/barcamp-2012/
+*** Original Blog Post: http://bit.ly/pffaCd
 
 
 #+COMMENT Bulleted lists start at outline level 4
