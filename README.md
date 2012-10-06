@@ -1,4 +1,4 @@
-OSCON 2012 Clojure Tutorial
+Your Own Compiler in 20 Minutes
 
 Developer Bootstrap
 ========================================

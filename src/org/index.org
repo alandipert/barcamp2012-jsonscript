@@ -1,42 +1,99 @@
-#+TITLE: Computing with Clojure
+#+TITLE: Your Own Compiler in 20 Minutes
 
 #+BEGIN_HTML
 <p>Press <strong>T</strong> to toggle slide-show mode.</p>
 #+END_HTML
 
-* Computing with Clojure                                              :slide:
+* Your Own Compiler in 20 Minutes                                     :slide:
 
 #+BEGIN_HTML
-<img id="clojure-logo" src="../images/Clojure.svg" alt="../images/clojure-glyph.svg" width="300" height="300" />
+<div style="text-align:center;">
+</br>
+<img id="lisp-logo" src="../images/lisp.png"/>
+</div>
 <p class="presenters">
-Alan Dipert & Clinton Dreisbach<br />
-Relevance, Inc.<br />
-thinkrelevance.com
+Alan Dipert</br>
+@alandipert
 </p>
 #+END_HTML
 
-* Welcome
-#+INCLUDE "welcome.org" :minlevel 2
-* Tutorial
-** Clojure Overview & REPL                                            :slide:
-#+INCLUDE "clojure-overview.org" :minlevel 2
-** Functions                                                          :slide:
-#+INCLUDE "functions.org" :minlevel 2
-** Names and Namespaces                                               :slide:
-#+INCLUDE "names-and-namespaces.org" :minlevel 2
+* Agenda                                                              :slide:
+** What's in a compiler?
+** What's Lisp?
+** Lisp → Javascript compiler
+* What's a compiler?                                                  :slide:
+** Compilers are functions
+*** Language A → Language B
+**** A is usually "high level"
+**** B is usually "low level"
+*** Examples
+**** Java to Java bytecode
+**** C to assembly
+* What's in a compiler?                                               :slide:
+*** Lexical Analyzer or "lexer"
+**** Recognizes *tokens* like =printf=, =echo=, and "=hello world="
+*** Parser
+**** Recognizes patterns of tokens and builds an *Abstract Syntax Tree (AST)*
+*** Generator or "back end"
+**** Walks the AST and generates appropriate code in the target language
+**** Optionally optimizes code for size, speed, or architecture
+* Javascript Compiler Example                                         :slide:
+*** =alert(1+2*3)=
+1. Lexically Analyze: =alert=, =(=, =1=, =+=, =2=, =*=, =3=, =)=
+2. Parse: <function call>(<arguments>...)
+   1. =<function: alert>(arguments: 1, +, 2...)=
+3. Generate: =compile(alert, compile(1), compile(+)...)=
+   1. =PUSH 2 R1, PUSH 3 R2, * R1,R2,R3...=
+* What's Lisp?                                                        :slide:
+*** Programming language invented in 1958
+*** Code is data
+**** Symbols: =alert=, =*=, =+=
+**** Numbers: =1=, =3=
+**** List of numbers: =(1 2 3)=
+**** Function call: =(+ 1 2 3)=
+* Javascript vs. Lisp                                                 :slide:
+*** Javascript
+#+begin_src javascript
+alert(1+2*3); //Source code string
+#+end_src
+*** Lisp
+#+begin_src lisp
+(alert (+ 1 (* 2 3))) ;;Source code data
+#+end_src
+**** Precedence rules unnecessary
+**** Compiler is passed data instead of source code strings or files
+* JSONScript                                                          :slide:
+*** Javascript Object Notation (JSON) is a subset of Javascript and common data format
+**** We will use JSON to represent Lisp programs
+**** Lisp
+#+begin_src lisp
+(alert (+ 1 (* 2 3)))
+#+end_src
+**** JSONScript
+#+begin_src javascript
+['alert', ['+', 1, ['*', 2, 3]]]
+#+end_src
+**** Note: strings are symbols, arrays are lists
+* Compiling JSON to JSONScript                                        :slide:
+**** Write a function that converts JSONScript to a string of Javascript
+**** Pass the string to =eval()=
+**** JSONScript
+#+begin_src javascript
+['alert', ['+', 1, ['*', 2, 3]]]
+#+end_src
+**** Javascript
+#+begin_src javascript
+alert(1+2*3)
+#+end_src
+**** Demo: http://tiny.cc/compiler
+* Thanks!                                                             :slide:
+*** Alan Dipert
+*** @alandipert
+*** Blog Post: http://bit.ly/pffaCd
 
-** Working with Java                                                  :slide:
-#+INCLUDE "java.org" :minlevel 2
-** Collections                                                        :slide:
-#+INCLUDE "collections.org" :minlevel 2
-** Flow Control                                                       :slide:
-#+INCLUDE "flow-control.org" :minlevel 2
-** HACK LIFE                                                          :slide:
-***** Clinton: @crnixon
-***** Alan: @alandipert
-* End
+
 #+COMMENT Bulleted lists start at outline level 4
-#+OPTIONS: h:4 toc:2
+#+OPTIONS: h:1 toc:1
 
 #+COMMENT include results of evaluating Clojure source code in exported HTML
 #+PROPERTY: results value
