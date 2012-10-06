@@ -40,10 +40,17 @@ Alan Dipert</br>
 * Javascript Compiler Example                                         :slide:
 *** =alert(1+2*3)=
 1. Lexically Analyze: =alert=, =(=, =1=, =+=, =2=, =*=, =3=, =)=
+   1. =identitifier<alert> arglist<number<1>, identifier<+>...=
 2. Parse: <function call>(<arguments>...)
    1. =<function: alert>(arguments: 1, +, 2...)=
 3. Generate: =compile(alert, compile(1), compile(+)...)=
    1. =PUSH 2 R1, PUSH 3 R2, * R1,R2,R3...=
+* The Dragon Book                                                     :slide:
+** file:../images/compilers.jpg
+* Time to Cheat!                                                      :slide:
+#+BEGIN_HTML
+<img style="width:600px;" src="../images/cheating.jpg"/>
+#+END_HTML
 * What's Lisp?                                                        :slide:
 *** Programming language invented in 1958
 *** Code is data
@@ -105,10 +112,8 @@ alert(1+2*3)
 
 #+STYLE: <link rel="stylesheet" type="text/css" href="../css/goog-common.css" />
 #+STYLE: <link rel="stylesheet" type="text/css" href="../css/common.css" />
-#+STYLE: <link rel="stylesheet" type="text/css" href="../css/screen.css" media="screen" />
 #+STYLE: <link rel="stylesheet" type="text/css" href="../css/projection.css" media="projection" />
 #+STYLE: <link rel="stylesheet" type="text/css" href="../css/presenter.css" media="presenter" />
-#+STYLE: <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" />
 
 #+BEGIN_HTML
 <script type="text/javascript" src="../../lib/org-html-slideshow/production/org-html-slideshow.js"></script>

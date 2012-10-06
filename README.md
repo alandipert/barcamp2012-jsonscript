@@ -1,5 +1,7 @@
 Your Own Compiler in 20 Minutes
 
+[View this presentation in your browser](http://alandipert.github.com/barcamp-2012/)
+
 Developer Bootstrap
 ========================================
 

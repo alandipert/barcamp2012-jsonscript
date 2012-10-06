@@ -6,7 +6,7 @@ cd `dirname $0`/..
 
 DATE=`date '+%Y%m%d'`
 
-BASENAME="clojure-tutorial-$DATE"
+BASENAME="barcamp-jsonscript-$DATE"
 OUT="out/$BASENAME"
 ASSETS="$OUT/slide-assets"
 
